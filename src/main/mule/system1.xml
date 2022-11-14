@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="22c90102-fef7-4d8a-9bb4-07dadb2ff1ce" >
+		<db:my-sql-connection host="localhost" port="3306" user="root" password="root" database="college" />
+	</db:config>
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="4aa61ab6-c1ab-44b2-a6fe-17f79788c127" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="system1Flow" doc:id="abc1c8ce-abb8-4efb-b73e-ee2782f8fb01" >
+		<http:listener doc:name="Listener" doc:id="f88ee3b6-a397-49a1-9390-9a57941dbf7c" path="/sys1" config-ref="HTTP_Listener_config"/>
+		<set-payload value="hii hello" doc:name="Set Payload" doc:id="535bd2fc-fde5-4be2-a372-f76fd7fceb78" />
+	</flow>
+</mule>
